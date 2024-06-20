@@ -9,6 +9,9 @@ $Arguments = @{
     'bc-server' = @{
         AllowSessionCallSuspendWhenWriteTransactionStarted = 'true'
     }
+    'bc-demo-database-gb' = @{
+        ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=CostaCoffee;Integrated Security=True'
+    }
 }
 
 $Packages = @(
