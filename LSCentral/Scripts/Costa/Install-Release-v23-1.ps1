@@ -28,7 +28,7 @@ param(
     $ServiceUser,
     [Parameter(Mandatory)]
     [SecureString] $ServicePassword,
-    $InstanceName = 'LSC-VitaPosCo-v23'
+    $InstanceName = 'LSC-Release-v23-1'
 )
 $ErrorActionPreference = 'stop'
 
@@ -37,9 +37,7 @@ $Arguments = @{
         ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=${Package.InstanceName};Integrated Security=True'
         AllowSessionCallSuspendWhenWriteTransactionStarted = 'true'
         DeveloperServicesEnabled = 'true'
-        PublicWebBaseUrl = 'http://localhost:8080/LSC-VitaPosCo-v23'
-        #ServiceUser = $ServiceUser
-        #ServicePassword = (ConvertFrom-SecureString $ServicePassword).ToString()
+        PublicWebBaseUrl = 'http://localhost:8080/${Package.InstanceName})'
     }
     'ls-central-demo-database' = @{
         ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=${Package.InstanceName};Integrated Security=True'
@@ -47,15 +45,13 @@ $Arguments = @{
 }
 
 $Packages = @(
-    @{ Id = 'ls-central-demo-database'; Version = '!^ 23.0' }
+    @{ Id = 'ls-central-demo-database'; Version = '!^ 23.1' }
     @{ Id = 'bc-server'; Version = ''}
     @{ Id = 'bc-web-client'; Version = '' }
-    #@{ Id = 'bc-system-symbols'; Version = '' }
-    #@{ Id = 'bc-system-application-runtime'; Version = '' }
-    @{ Id = 'ls-central-app-runtime'; Version = '!^ 23.0' }
-    @{ Id = 'locale/ls-central-no-runtime'; Version = '!^ 23.0' }
+    @{ Id = 'ls-central-app-runtime'; Version = '!^ 23.1' }
+    @{ Id = 'locale/ls-central-no-runtime'; Version = '!^ 23.1' }
     @{ Id = 'internal/ls-central-dev-license'; Version = '' }
-    @{ Id = 'map/ls-central-to-bc'; Version = '!^ 23.0' }
+    @{ Id = 'map/ls-central-to-bc'; Version = '!^ 23.1' }
 )
  
-$Packages | Install-UscPackage -InstanceName $InstanceName -Arguments $Arguments -UpdateInstance
+$Packages | Install-UscPackage -InstanceName $InstanceName -Arguments $Arguments

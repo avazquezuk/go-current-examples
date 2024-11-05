@@ -10,7 +10,7 @@ $Arguments = @{
         AllowSessionCallSuspendWhenWriteTransactionStarted = 'true'
     }
     'bc-demo-database-gb' = @{
-        ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=CostaCoffee;Integrated Security=True'
+        ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=BC240;Integrated Security=True'
     }
 }
 
@@ -28,4 +28,4 @@ $Packages = @(
     
 )
  
-$Packages | Install-UscPackage -InstanceName 'CostaCoffeeDev' -Arguments $Arguments
+$Packages | Install-UscPackage -InstanceName 'BC240' -Arguments $Arguments
