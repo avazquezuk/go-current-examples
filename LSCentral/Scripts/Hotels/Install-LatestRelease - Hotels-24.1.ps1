@@ -17,14 +17,15 @@ $Arguments = @{
 $Packages = @(
     # Optional, uncomment to include:
     #@{ Id = 'sql-server-express'; VersionQuery = '^-'}
-    @{ Id = 'ls-central-demo-database'; Version = '' }
+    @{ Id = 'ls-central-demo-database'; Version = '!^ 24.1' }
     @{ Id = 'bc-web-client'; Version = '' }
     @{ Id = 'bc-system-application-runtime'; Version = '' }
     @{ Id = 'bc-base-application-runtime'; Version = '' }
-    @{ Id = 'ls-central-app-runtime'; Version = '' }
-    @{ Id = 'map/ls-central-to-bc'; Version = '' }
-    @{ Id = 'ls-hotels-app-runtime'; Version = '' }
-    @{ Id = 'ls-hotels-configuration-packages'; Version = '' }
+    @{ Id = 'ls-central-app-runtime'; Version = '!^ 24.1' }
+    @{ Id = 'map/ls-central-to-bc'; Version = '!^ 24.1' }
+    @{ Id = 'ls-hotels-app-runtime'; Version = '!^ 24.1' }
+    @{ Id = 'ls-hotels-configuration-packages'; Version = '!^ 24.1' }
+    @{ Id = 'internal/ls-central-dev-license'; Version = '' }
     #@{ Id = 'bc-performance-toolkit'; Version = '' }
     #@{ Id = 'bc-test-library-any'; Version = '' }
     #@{ Id = 'bc-al-test-runner'; Version = '' }
@@ -32,4 +33,4 @@ $Packages = @(
     
 )
 
-$Packages | Install-UscPackage -InstanceName 'LSC-Release-Hotels' -Arguments $Arguments -UpdateInstance
+$Packages | Install-UscPackage -InstanceName 'LSC-Release-Hotels-v24-1' -Arguments $Arguments -UpdateInstance
