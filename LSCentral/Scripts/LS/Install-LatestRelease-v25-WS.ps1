@@ -22,10 +22,12 @@ $Arguments = @{
         ClientServicesCredentialType                       = 'NavUserPassword'
         ServicesCertificateThumbprint                      = '${my-private-certificate.CertificateThumbprint}'
         AllowSessionCallSuspendWhenWriteTransactionStarted = 'true'
-        ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=LSC-Release-v25;Integrated Security=True'
+        ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=LSC-Latest;Integrated Security=True'
+        PortSharing ='true'
     }
     'bc-web-client'            = @{
         DnsIdentity = '${my-public-certificate.DnsIdentity}'
+        ClientServicesCredentialType = 'NavUserPassword'
     }
 }
 
@@ -39,11 +41,13 @@ $Packages = @(
     @{ Id = "my-private-certificate"; Version = "" }
 
     #@{ Id = 'ls-central-demo-database'; Version = '' }
-    @{ Id = 'bc-web-client'; Version = '' }
-    @{ Id = 'bc-system-application-runtime'; Version = '' }
-    @{ Id = 'bc-base-application-runtime'; Version = '' }
-    @{ Id = 'ls-central-app-runtime'; Version = '!^ 25.0' }
-    @{ Id = 'map/ls-central-to-bc'; Version = '!^ 25.0' }
+    @{ Id = 'bc-server'; VersionQuery = $BcServer.Version }
+    @{ Id = 'bc-web-client'; VersionQuery = $BcServer.Version }
+    #@{ Id = 'bc-system-application-runtime'; Version = '' }
+    #@{ Id = 'bc-base-application-runtime'; Version = '' }
+    #@{ Id = 'ls-central-app-runtime'; Version = '' }
+    @{ Id = 'internal/ls-central-dev-license'; Version = '' }
+    @{ Id = 'map/ls-central-to-bc'; Version = '' }
 )
  
-$Packages | Install-UscPackage -InstanceName 'LSC-Release-v25-WS' -UpdateStrategy 'Automatic' -Arguments $Arguments
+$Packages | Install-UscPackage -InstanceName 'LSC-Latest-WS' -UpdateStrategy 'Automatic' -Arguments $Arguments

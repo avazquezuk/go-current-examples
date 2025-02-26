@@ -42,10 +42,10 @@ $Packages = @(
     @{ Id = 'bc-web-client'; Version = '' }
     #@{ Id = 'bc-system-application-runtime'; Version = '' }
     #@{ Id = 'bc-base-application-runtime'; Version = '' }
-    @{ Id = 'ls-central-app-runtime'; Version = '!^ 25.0' }
-    @{ Id = 'locale/ls-central-no-runtime'; Version = '!^ 25.0' }
+    @{ Id = 'ls-central-app-runtime'; Version = '!^ 25.1' }
+    @{ Id = 'locale/ls-central-no-runtime'; Version = '!^ 25.1' }
     @{ Id = 'internal/ls-central-dev-license'; Version = '' }
-    @{ Id = 'map/ls-central-to-bc'; Version = '!^ 25.0' }
+    @{ Id = 'map/ls-central-to-bc'; Version = '!^ 25.1' }
 )
  
-$Packages | Install-UscPackage -InstanceName 'Megaflis-HO-v25-WS' -UpdateStrategy 'Automatic' -Arguments $Arguments
+$Packages | Install-UscPackage -InstanceName 'Megaflis-HO-v25-WS' -UpdateStrategy 'Automatic' -Arguments $Arguments -UpdateInstance

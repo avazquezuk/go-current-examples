@@ -1,4 +1,4 @@
-#requires -RunAsAdministrator
+﻿#requires -RunAsAdministrator
 <#
     .SYNOPSIS
         Install the latest LS Central version.
@@ -10,7 +10,7 @@ $Arguments = @{
         AllowForceSync = 'true'
         AllowSessionCallSuspendWhenWriteTransactionStarted = 'true'
         DeveloperServicesEnabled = 'true'
-        PublicWebBaseUrl = 'http://localhost:8080/${Package.InstanceName}'
+        PublicWebBaseUrl = 'http://localhost:8080/DF-25_1'
     }
         'ls-central-demo-database' = @{
         ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=${Package.InstanceName};Integrated Security=True'
@@ -20,13 +20,13 @@ $Arguments = @{
 $Packages = @(
     # Optional, uncomment to include:
     #@{ Id = 'sql-server-express'; VersionQuery = '^-'}
-    @{ Id = 'ls-central-demo-database'; Version = '!^ 23.0' }
+    @{ Id = 'ls-central-demo-database'; Version = '!^ 25.1' }
     @{ Id = 'bc-web-client'; Version = '' }
     @{ Id = 'bc-system-application-runtime'; Version = '' }
     @{ Id = 'bc-base-application-runtime'; Version = '' }
-    @{ Id = 'ls-central-app-runtime'; Version = '!^ 23.0' }
+    @{ Id = 'ls-central-app-runtime'; Version = '!^ 25.1' }
     @{ Id = 'internal/ls-central-dev-license'; Version = '' }
-    @{ Id = 'map/ls-central-to-bc'; Version = '!^ 23.0' }
+    @{ Id = 'map/ls-central-to-bc'; Version = '!^ 25.1' }
 )
 
-$Packages | Install-UscPackage -InstanceName 'LSC-VitaPosCo-v23' -Arguments $Arguments -UpdateInstance
+$Packages | Install-UscPackage -InstanceName 'DF-25_1' -Arguments $Arguments -UpdateInstance

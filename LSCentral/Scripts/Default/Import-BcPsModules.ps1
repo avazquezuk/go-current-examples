@@ -15,7 +15,7 @@
         This example imports the BC cmdlets from a Update Service instance called LsCentral.
 #>
 param(
-    $InstanceName = 'LsCentral'
+    $InstanceName = 'DF-25_0'
 )
 $ErrorActionPreference = 'stop'
 
@@ -28,7 +28,7 @@ if (!$BcServer)
 }
 
 $ModuleDir = $BcServer.Info.ServerDir
-if (Test-Path (Join-Path $BcServer.Info.ServerDir 'Management\Microsoft.Dynamics.Nav.Management.dll'))
+if (Test-Path (Join-Path $BcServer.Info.ServerDir 'Microsoft.Dynamics.Nav.Management.dll'))
 {
     $ModuleDir = Join-Path $BcServer.Info.ServerDir 'Management'
 }
