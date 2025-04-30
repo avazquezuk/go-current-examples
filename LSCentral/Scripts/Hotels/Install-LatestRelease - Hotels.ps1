@@ -22,9 +22,10 @@ $Packages = @(
     @{ Id = 'bc-system-application-runtime'; Version = '' }
     @{ Id = 'bc-base-application-runtime'; Version = '' }
     @{ Id = 'ls-central-app-runtime'; Version = '' }
-    @{ Id = 'map/ls-central-to-bc'; Version = '' }
     @{ Id = 'ls-hotels-app-runtime'; Version = '' }
     @{ Id = 'ls-hotels-configuration-packages'; Version = '' }
+    @{ Id = 'internal/ls-central-dev-license'; Version = '' }
+    @{ Id = 'map/ls-central-to-bc'; Version = '' }
     #@{ Id = 'bc-performance-toolkit'; Version = '' }
     #@{ Id = 'bc-test-library-any'; Version = '' }
     #@{ Id = 'bc-al-test-runner'; Version = '' }
