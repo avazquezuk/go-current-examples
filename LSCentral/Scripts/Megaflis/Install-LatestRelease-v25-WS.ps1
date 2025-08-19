@@ -30,22 +30,15 @@ $Arguments = @{
 }
 
 $Packages = @(
-    # Optional, uncomment to include:
-    #@{ Id = 'sql-server-express'; VersionQuery = '^-'}
 
-    # You can find out how to create the my-public-certificate and
-    # my-private-certificate packages in the package examples.
     @{ Id = "my-public-certificate"; Version = "" }
     @{ Id = "my-private-certificate"; Version = "" }
 
-    #@{ Id = 'ls-central-demo-database'; Version = '' }
     @{ Id = 'bc-web-client'; Version = '' }
-    #@{ Id = 'bc-system-application-runtime'; Version = '' }
-    #@{ Id = 'bc-base-application-runtime'; Version = '' }
-    @{ Id = 'ls-central-app-runtime'; Version = '!^ 25.1' }
-    @{ Id = 'locale/ls-central-no-runtime'; Version = '!^ 25.1' }
+    @{ Id = 'ls-central-app-runtime'; Version = '' }
+    @{ Id = 'locale/ls-central-no-runtime'; Version = '' }
     @{ Id = 'internal/ls-central-dev-license'; Version = '' }
-    @{ Id = 'map/ls-central-to-bc'; Version = '!^ 25.1' }
+    @{ Id = 'map/ls-central-to-bc'; Version = '' }
 )
  
 $Packages | Install-UscPackage -InstanceName 'Megaflis-HO-v25-WS' -UpdateStrategy 'Automatic' -Arguments $Arguments -UpdateInstance

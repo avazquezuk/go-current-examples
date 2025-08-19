@@ -20,13 +20,13 @@ $Arguments = @{
 $Packages = @(
     # Optional, uncomment to include:
     #@{ Id = 'sql-server-express'; VersionQuery = '^-'}
-    @{ Id = 'ls-central-demo-database'; Version = '' }
+    @{ Id = 'ls-central-demo-database'; Version = '!^ 25.3' }
     @{ Id = 'bc-web-client'; Version = '' }
     @{ Id = 'bc-system-application-runtime'; Version = '' }
     @{ Id = 'bc-base-application-runtime'; Version = '' }
-    @{ Id = 'ls-central-app-runtime'; Version = '' }
+    @{ Id = 'ls-central-app-runtime'; Version = '!^ 25.3' }
     @{ Id = 'internal/ls-central-dev-license'; Version = '' }
-    @{ Id = 'map/ls-central-to-bc'; Version = '' }
+    @{ Id = 'map/ls-central-to-bc'; Version = '!^ 25.3' }
 )
  
-$Packages | Install-UscPackage -InstanceName 'LSC-LoyaltyIntegration' -Arguments $Arguments -UpdateInstance
+$Packages | Install-UscPackage -InstanceName 'LSC-Release-v25-3' -Arguments $Arguments -UpdateInstance

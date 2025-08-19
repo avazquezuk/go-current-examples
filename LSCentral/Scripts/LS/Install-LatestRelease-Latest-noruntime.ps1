@@ -22,11 +22,11 @@ $Packages = @(
     #@{ Id = 'sql-server-express'; VersionQuery = '^-'}
     @{ Id = 'ls-central-demo-database'; Version = '' }
     @{ Id = 'bc-web-client'; Version = '' }
-    @{ Id = 'bc-system-application-runtime'; Version = '' }
-    @{ Id = 'bc-base-application-runtime'; Version = '' }
-    @{ Id = 'ls-central-app-runtime'; Version = '' }
+    @{ Id = 'bc-system-application'; Version = '' }
+    @{ Id = 'bc-base-application'; Version = '' }
+    @{ Id = 'ls-central-app'; Version = '' }
     @{ Id = 'internal/ls-central-dev-license'; Version = '' }
     @{ Id = 'map/ls-central-to-bc'; Version = '' }
 )
  
-$Packages | Install-UscPackage -InstanceName 'LSC-LoyaltyIntegration' -Arguments $Arguments -UpdateInstance
+$Packages | Install-UscPackage -InstanceName 'LSC-LoyaltyIntegrationHO-Noruntime' -Arguments $Arguments -UpdateInstance

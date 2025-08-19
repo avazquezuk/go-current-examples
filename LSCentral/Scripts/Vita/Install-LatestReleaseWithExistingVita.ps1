@@ -24,10 +24,6 @@
 #>
 param(
     $ConnectionString = 'Data Source=${System.SqlServerInstance};Initial Catalog=${Package.InstanceName};Integrated Security=True',
-    [Parameter(Mandatory)]
-    $ServiceUser,
-    [Parameter(Mandatory)]
-    [SecureString] $ServicePassword,
     $InstanceName = 'LSC-VitaPos'
 )
 $ErrorActionPreference = 'stop'
@@ -36,23 +32,20 @@ $Arguments = @{
     'bc-server' = @{
         ConnectionString = $ConnectionString
         AllowSessionCallSuspendWhenWriteTransactionStarted = 'true'
-        LicenseUri = 'C:\Development\5337065 (24).bclicense'
         DeveloperServicesEnabled = 'true'
         PublicWebBaseUrl = 'http://localhost:8080/LSC-VitaPos'
-        #ServiceUser = $ServiceUser
-        #ServicePassword = (ConvertFrom-SecureString $ServicePassword).ToString()
     }
 }
 
 $Packages = @(
-    @{ Id = 'bc-server'; Version = '' }
+    @{ Id = 'bc-server'; Version = '!^ 23.0' }
     @{ Id = 'bc-web-client'; Version = '' }
     @{ Id = 'bc-system-symbols'; Version = '' }
     @{ Id = 'bc-system-application-runtime'; Version = '' }
-    #@{ Id = 'bc-base-application-runtime'; Version = '' }
-    @{ Id = 'ls-central-app-runtime'; Version = '' }
-    @{ Id = 'locale/ls-central-no-runtime'; Version = $Config.LsCentralVersion }
-    @{ Id = 'map/ls-central-to-bc'; Version = '' }
+    @{ Id = 'ls-central-app-runtime'; Version = '!^ 23.0' }
+    @{ Id = 'locale/ls-central-no-runtime'; Version = '!^ 23.0' }
+    @{ Id = 'map/ls-central-to-bc'; Version = '!^ 23.0' }
+    @{ Id = 'internal/ls-central-dev-license'; Version = '' }
 )
  
 $Packages | Install-UscPackage -InstanceName $InstanceName -Arguments $Arguments -UpdateInstance
