@@ -12,7 +12,7 @@ function RegisterSnapIn($snapIn, $visibleName)
     return
   }
 
-  $nstPath = "C:\Program Files\LS Retail\Update Service\Instances\DF-25_0\Service"
+  $nstPath = "C:\Program Files\LS Retail\Update Service\Instances\Megaflis-HO-v25\Service"
 
   $snapInAssembly = Join-Path (Get-ItemProperty -path $nstPath).Path "\$snapIn.psd1"
   if(!(Test-Path $snapInAssembly)) { $snapInAssembly = Join-Path (Get-ItemProperty -path $nstPath).Path "\$snapIn.dll" }
