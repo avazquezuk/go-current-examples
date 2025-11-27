@@ -1,4 +1,4 @@
-﻿#requires -RunAsAdministrator
+#requires -RunAsAdministrator
 <#
     .SYNOPSIS
         Install the latest LS Central version.

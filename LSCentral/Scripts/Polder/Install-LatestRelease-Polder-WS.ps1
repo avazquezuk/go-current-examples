@@ -20,24 +20,21 @@ $Arguments = @{
         DeveloperServicesEnabled                           = 'true'
         AllowForceSync                                     = 'true'
         ClientServicesCredentialType                       = 'NavUserPassword'
-        ServicesCertificateThumbprint                      = '${my-private-certificate.CertificateThumbprint}'
+        ServicesCertificateThumbprint                      = '2081d9b4d536ac7ab2df0a3cdb89cf565aeb052a'
         AllowSessionCallSuspendWhenWriteTransactionStarted = 'true'
-        ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=Megaflis-HO;Integrated Security=True'
+        ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=OnPrem-Voyado-Store;Integrated Security=True'
     }
     'bc-web-client'            = @{
-        DnsIdentity = '${my-public-certificate.DnsIdentity}'
+        DnsIdentity = 'localhost'
     }
 }
 
 $Packages = @(
-
-    @{ Id = "my-public-certificate"; Version = "" }
-    @{ Id = "my-private-certificate"; Version = "" }
     @{ Id = 'bc-web-client'; Version = '' }
+    @{ Id = 'bc-system-application-runtime'; Version = '' }
+    @{ Id = 'bc-base-application-runtime'; Version = '' }
     @{ Id = 'ls-central-app-runtime'; Version = '' }
-    @{ Id = 'locale/ls-central-no-runtime'; Version = '' }
-    @{ Id = 'internal/ls-central-dev-license'; Version = '' }
     @{ Id = 'map/ls-central-to-bc'; Version = '' }
 )
  
-$Packages | Install-UscPackage -InstanceName 'Megaflis-HO-WS' -UpdateStrategy 'Automatic' -Arguments $Arguments -UpdateInstance
+$Packages | Install-UscPackage -InstanceName 'OnPrem-Voyado-Store-WS' -UpdateStrategy 'Automatic' -Arguments $Arguments

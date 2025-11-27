@@ -24,7 +24,7 @@
 #>
 param(
     $ConnectionString = 'Data Source=${System.SqlServerInstance};Initial Catalog=${Package.InstanceName};Integrated Security=True',
-    $InstanceName = 'Megaflis-HO-v25'
+    $InstanceName = 'Megaflis-ST'
 )
 $ErrorActionPreference = 'stop'
 
@@ -34,7 +34,6 @@ $Arguments = @{
         AllowSessionCallSuspendWhenWriteTransactionStarted = 'true'
         DeveloperServicesEnabled = 'true'
         PublicWebBaseUrl = 'http://localhost:8080/${Package.InstanceName}'
-        LicenseUri = 'C:\Repositories\BusinessCentral\Voyado\5337065.bclicense'
     }
     'ls-central-demo-database' = @{
         ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=${Package.InstanceName};Integrated Security=True'
@@ -42,12 +41,12 @@ $Arguments = @{
 }
 
 $Packages = @(
-    #@{ Id = 'ls-central-demo-database'; Version = '!^ 25.0' }
-    @{ Id = 'bc-server'; Version = ''}
+    @{ Id = 'ls-central-demo-database'; Version = '' }
+    @{ Id = 'bc-server'; Version = '' }
     @{ Id = 'bc-web-client'; Version = '' }
     @{ Id = 'ls-central-app-runtime'; Version = '' }
     @{ Id = 'locale/ls-central-no-runtime'; Version = '' }
-    #@{ Id = 'internal/ls-central-dev-license'; Version = '' }
+    @{ Id = 'internal/ls-central-dev-license'; Version = '' }
     @{ Id = 'map/ls-central-to-bc'; Version = '' }
 )
  

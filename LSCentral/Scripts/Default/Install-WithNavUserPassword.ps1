@@ -20,11 +20,13 @@ $Arguments = @{
         DeveloperServicesEnabled = 'true'
         AllowForceSync = 'true'
         ClientServicesCredentialType = 'NavUserPassword'
-        ServicesCertificateThumbprint = '${my-private-certificate.CertificateThumbprint}'
+        #ServicesCertificateThumbprint = '${my-private-certificate.CertificateThumbprint}'
+        ServicesCertificateThumbprint = '2081d9b4d536ac7ab2df0a3cdb89cf565aeb052a'
         AllowSessionCallSuspendWhenWriteTransactionStarted = 'true'
     }
     'bc-web-client' = @{
-        DnsIdentity =  '${my-public-certificate.DnsIdentity}'
+        #DnsIdentity =  '${my-public-certificate.DnsIdentity}'
+        DnsIdentity =  'localhost'
     }
 }
 $Packages = @(
@@ -33,15 +35,15 @@ $Packages = @(
 
     # You can find out how to create the my-public-certificate and
     # my-private-certificate packages in the package examples.
-    @{ Id = "my-public-certificate"; Version = "" }
-    @{ Id = "my-private-certificate"; Version = "" }
-
-    @{ Id = 'ls-central-demo-database'; Version = '' }
+    #@{ Id = "my-public-certificate"; Version = "" }
+    #@{ Id = "my-private-certificate"; Version = "" }
+    #@{ Id = 'ls-central-demo-database'; Version = '' }
     @{ Id = 'bc-web-client'; Version = '' }
     @{ Id = 'bc-system-application-runtime'; Version = '' }
     @{ Id = 'bc-base-application-runtime'; Version = '' }
     @{ Id = 'ls-central-app-runtime'; Version = '' }
+    @{ Id = 'internal/ls-central-dev-license'; Version = '' }
     @{ Id = 'map/ls-central-to-bc'; Version = '' }
 )
  
-$Packages | Install-UscPackage -InstanceName 'LSCentral' -UpdateStrategy 'Manual' -Arguments $Arguments
+$Packages | Install-UscPackage -InstanceName 'LSCentral-v27-WS' -UpdateStrategy 'Manual' -Arguments $Arguments

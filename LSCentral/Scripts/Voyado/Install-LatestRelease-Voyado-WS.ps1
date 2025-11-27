@@ -22,7 +22,7 @@ $Arguments = @{
         ClientServicesCredentialType                       = 'NavUserPassword'
         ServicesCertificateThumbprint                      = '${my-private-certificate.CertificateThumbprint}'
         AllowSessionCallSuspendWhenWriteTransactionStarted = 'true'
-        ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=Megaflis-HO;Integrated Security=True'
+        ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=OnPrem-Voyado-Latest;Integrated Security=True'
     }
     'bc-web-client'            = @{
         DnsIdentity = '${my-public-certificate.DnsIdentity}'
@@ -30,14 +30,20 @@ $Arguments = @{
 }
 
 $Packages = @(
+    # Optional, uncomment to include:
+    #@{ Id = 'sql-server-express'; VersionQuery = '^-'}
 
+    # You can find out how to create the my-public-certificate and
+    # my-private-certificate packages in the package examples.
     @{ Id = "my-public-certificate"; Version = "" }
     @{ Id = "my-private-certificate"; Version = "" }
+
+    #@{ Id = 'ls-central-demo-database'; Version = '' }
     @{ Id = 'bc-web-client'; Version = '' }
+    @{ Id = 'bc-system-application-runtime'; Version = '' }
+    @{ Id = 'bc-base-application-runtime'; Version = '' }
     @{ Id = 'ls-central-app-runtime'; Version = '' }
-    @{ Id = 'locale/ls-central-no-runtime'; Version = '' }
-    @{ Id = 'internal/ls-central-dev-license'; Version = '' }
     @{ Id = 'map/ls-central-to-bc'; Version = '' }
 )
  
-$Packages | Install-UscPackage -InstanceName 'Megaflis-HO-WS' -UpdateStrategy 'Automatic' -Arguments $Arguments -UpdateInstance
+$Packages | Install-UscPackage -InstanceName 'OnPrem-Voyado-Latest-WS' -UpdateStrategy 'Automatic' -Arguments $Arguments

@@ -20,13 +20,13 @@ $Arguments = @{
 
 $Packages = @(
     # Optional, uncomment to include:
-    @{ Id = 'ls-central-demo-database'; Version = '' }
-    @{ Id = 'bc-web-client'; Version = '' }
-    @{ Id = 'bc-system-application-runtime'; Version = '' }
-    @{ Id = 'bc-base-application-runtime'; Version = '' }
-    @{ Id = 'ls-central-app'; Version = '' }
+    @{ Id = 'ls-central-demo-database'; Version = '!^ 24.0' }
+    @{ Id = 'bc-web-client'; Version = '!^ 24.0' }
+    @{ Id = 'bc-system-application-runtime'; Version = '!^ 24.0' }
+    @{ Id = 'bc-base-application-runtime'; Version = '!^ 24.0' }
+    @{ Id = 'ls-central-app'; Version = '!^ 24.0' }
     @{ Id = 'internal/ls-central-dev-license'; Version = '' }
-    @{ Id = 'map/ls-central-to-bc'; Version = '' }
+    @{ Id = 'map/ls-central-to-bc'; Version = '!^ 24.0' }
 )
 
-$Packages | Install-UscPackage -InstanceName 'LSC-LatestRelease-SSK' -Arguments $Arguments -UpdateInstance
+$Packages | Install-UscPackage -InstanceName 'LSC-SSK-v24' -Arguments $Arguments -UpdateInstance
