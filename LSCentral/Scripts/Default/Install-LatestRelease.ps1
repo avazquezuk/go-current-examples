@@ -13,12 +13,12 @@ $Arguments = @{
 
 $Packages = @(
     # Optional, uncomment to include:
-    @{ Id = 'sql-server-express'; VersionQuery = ''}
+    #@{ Id = 'sql-server-express'; VersionQuery = ''}
     @{ Id = 'ls-central-demo-database'; Version = '' }
     @{ Id = 'bc-web-client'; Version = '' }
     @{ Id = 'bc-system-application-runtime'; Version = '' }
     @{ Id = 'bc-base-application-runtime'; Version = '' }
-    @{ Id = 'ls-central-app-runtime'; Version = '' }
+    @{ Id = 'ls-central-app'; Version = '' }
     @{ Id = 'internal/ls-central-dev-license'; Version = '' }
     @{ Id = 'map/ls-central-to-bc'; Version = '' }
 )
