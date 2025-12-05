@@ -16,7 +16,7 @@
     .EXAMPLE
         ```powershell
         Install-LatestRelease.ps1 -ConnectionString 'Data Source=SQLSERVERMACHINE;Initial Catalog=DATABASENAME;Integrated Security=True' -ServiceUser 'domain\user' -ServicePassword (ConvertTo-SecureString -String 'DummyPassword' -AsPlainText -Force)
-        .\Install-LatestReleaseWithExistingVitaCOv23.ps1 -ConnectionString 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=vitaposco_v23;Integrated Security=True' -ServiceUser 'alejandrova@lsretail.com' -ServicePassword (ConvertTo-SecureString -String 'Zpyv5xhvb1210.' -AsPlainText -Force)
+        .\Install-LatestReleaseWithExistingVitaCOv23.ps1 -ConnectionString 'Data Source=PTPOPF5VSEB7\AVMSQLSERVER;Initial Catalog=vitaposco_v23;Integrated Security=True' -ServiceUser 'alejandrova@lsretail.com' -ServicePassword (ConvertTo-SecureString -String 'Zpyv5xhvb1210.' -AsPlainText -Force)
         ```
         This example installs lastest version fo LS Central, connects the database DATABASENAME on the server SQLSERVERMACHINE.
         With the user domain\user running the Business Central service tier.
@@ -30,14 +30,14 @@ $ErrorActionPreference = 'stop'
 
 $Arguments = @{
     'bc-server' = @{
-        ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=${Package.InstanceName};Integrated Security=True'
+        ConnectionString = 'Data Source=PTPOPF5VSEB7\AVMSQLSERVER;Initial Catalog=${Package.InstanceName};Integrated Security=True'
         AllowSessionCallSuspendWhenWriteTransactionStarted = 'true'
         DeveloperServicesEnabled = 'true'
         PublicWebBaseUrl = 'http://localhost:8080/${Package.InstanceName}'
         LicenseUri = 'C:\Repositories\BusinessCentral\Voyado\5337065.bclicense'
     }
     'ls-central-demo-database' = @{
-        ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=${Package.InstanceName};Integrated Security=True'
+        ConnectionString = 'Data Source=PTPOPF5VSEB7\AVMSQLSERVER;Initial Catalog=${Package.InstanceName};Integrated Security=True'
     }
 }
 

@@ -16,14 +16,14 @@
     .EXAMPLE
         ```powershell
         Install-LatestRelease.ps1 -ConnectionString 'Data Source=SQLSERVERMACHINE;Initial Catalog=DATABASENAME;Integrated Security=True' -ServiceUser 'domain\user' -ServicePassword (ConvertTo-SecureString -String 'DummyPassword' -AsPlainText -Force)
-        .\Install-LatestReleaseWithExistingDF.ps1 -ConnectionString 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=DF-Latest;Integrated Security=True' -ServiceUser 'alejandrova@lsretail.com' -ServicePassword (ConvertTo-SecureString -String 'DummyPassword' -AsPlainText -Force)
+        .\Install-LatestReleaseWithExistingDF.ps1 -ConnectionString 'Data Source=PTPOPF5VSEB7\AVMSQLSERVER;Initial Catalog=DF-Latest;Integrated Security=True' -ServiceUser 'alejandrova@lsretail.com' -ServicePassword (ConvertTo-SecureString -String 'DummyPassword' -AsPlainText -Force)
         ```
         This example installs lastest version fo LS Central, connects the database DATABASENAME on the server SQLSERVERMACHINE.
         With the user domain\user running the Business Central service tier.
 
 #>
 param(
-    $ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=DF-Latest;Integrated Security=True',
+    $ConnectionString = 'Data Source=PTPOPF5VSEB7\AVMSQLSERVER;Initial Catalog=DF-Latest;Integrated Security=True',
     [Parameter(Mandatory)]
     $ServiceUser,
     [Parameter(Mandatory)]

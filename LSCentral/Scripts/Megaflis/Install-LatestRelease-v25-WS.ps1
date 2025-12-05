@@ -22,7 +22,7 @@ $Arguments = @{
         ClientServicesCredentialType                       = 'NavUserPassword'
         ServicesCertificateThumbprint                      = '${my-private-certificate.CertificateThumbprint}'
         AllowSessionCallSuspendWhenWriteTransactionStarted = 'true'
-        ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=Megaflis-HO;Integrated Security=True'
+        ConnectionString = 'Data Source=PTPOPF5VSEB7\AVMSQLSERVER;Initial Catalog=Megaflis-HO;Integrated Security=True'
     }
     'bc-web-client'            = @{
         DnsIdentity = '${my-public-certificate.DnsIdentity}'

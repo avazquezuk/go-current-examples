@@ -10,7 +10,7 @@ $Arguments = @{
         AllowSessionCallSuspendWhenWriteTransactionStarted = 'true'
     }
     'ls-central-demo-database' = @{
-        ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=${Package.InstanceName};Integrated Security=True'
+        ConnectionString = 'Data Source=PTPOPF5VSEB7\AVMSQLSERVER;Initial Catalog=${Package.InstanceName};Integrated Security=True'
     }
 }
 

@@ -7,7 +7,7 @@ $ErrorActionPreference = 'stop'
 
 $Arguments = @{
     'bc-server' = @{
-        ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=CostaCoffee2;Integrated Security=True'
+        ConnectionString = 'Data Source=PTPOPF5VSEB7\AVMSQLSERVER;Initial Catalog=CostaCoffee2;Integrated Security=True'
         AllowSessionCallSuspendWhenWriteTransactionStarted = 'true'
         #LicenseUri = 'C:\Development\5337065 (24).bclicense'
         DeveloperServicesEnabled = 'true'
@@ -17,7 +17,7 @@ $Arguments = @{
         PortSharing = 'True'
     }
     'bc-demo-database-gb' = @{
-        ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=CostaCoffee2;Integrated Security=True'
+        ConnectionString = 'Data Source=PTPOPF5VSEB7\AVMSQLSERVER;Initial Catalog=CostaCoffee2;Integrated Security=True'
     }
 }
 

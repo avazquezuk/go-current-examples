@@ -10,7 +10,7 @@ $Arguments = @{
         AllowSessionCallSuspendWhenWriteTransactionStarted = 'true'
     }
     'bc-demo-database-gb' = @{
-        ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=BC240;Integrated Security=True'
+        ConnectionString = 'Data Source=PTPOPF5VSEB7\AVMSQLSERVER;Initial Catalog=BC240;Integrated Security=True'
     }
 }
 

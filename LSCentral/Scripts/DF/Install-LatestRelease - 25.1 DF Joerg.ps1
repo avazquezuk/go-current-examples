@@ -11,7 +11,7 @@ $Arguments = @{
         AllowSessionCallSuspendWhenWriteTransactionStarted = 'true'
         DeveloperServicesEnabled = 'true'
         PublicWebBaseUrl = 'http://localhost:8080/${Package.InstanceName}'
-        ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=${Package.InstanceName};Integrated Security=True'
+        ConnectionString = 'Data Source=PTPOPF5VSEB7\AVMSQLSERVER;Initial Catalog=${Package.InstanceName};Integrated Security=True'
         NoDatabaseUpgrades = 'False'
         ServiceUser = 'LSRETAIL\ALEJANDROVA'
         ServicePassword = 'Zpyv5xhvb1210.'

@@ -22,7 +22,7 @@ $Arguments = @{
         ClientServicesCredentialType                       = 'NavUserPassword'
         ServicesCertificateThumbprint                      = '2081d9b4d536ac7ab2df0a3cdb89cf565aeb052a'
         AllowSessionCallSuspendWhenWriteTransactionStarted = 'true'
-        ConnectionString = 'Data Source=PTPOPW04JD56\AVMSQLSERVER;Initial Catalog=OnPrem-Voyado-Store;Integrated Security=True'
+        ConnectionString = 'Data Source=PTPOPF5VSEB7\AVMSQLSERVER;Initial Catalog=OnPrem-Voyado-Store;Integrated Security=True'
     }
     'bc-web-client'            = @{
         DnsIdentity = 'localhost'
