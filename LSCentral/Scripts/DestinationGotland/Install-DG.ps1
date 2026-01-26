@@ -24,7 +24,7 @@
 #>
 param(
     $ConnectionString = 'Data Source=${System.SqlServerInstance};Initial Catalog=${Package.InstanceName};Integrated Security=True',
-    $InstanceName = 'Megaflis-ST-v27'
+    $InstanceName = 'DG'
 )
 $ErrorActionPreference = 'stop'
 
@@ -41,13 +41,13 @@ $Arguments = @{
 }
 
 $Packages = @(
-    @{ Id = 'ls-central-demo-database'; Version = '' }
+    @{ Id = 'ls-central-demo-database'; Version = '!^ 25.1' }
     @{ Id = 'bc-server'; Version = '' }
     @{ Id = 'bc-web-client'; Version = '' }
-    @{ Id = 'ls-central-app-runtime'; Version = '' }
-    @{ Id = 'locale/ls-central-no-runtime'; Version = '' }
+    @{ Id = 'ls-central-app-runtime'; Version = '!^ 25.1' }
+    @{ Id = 'locale/ls-central-se-runtime'; Version = '!^ 25.1' }
     @{ Id = 'internal/ls-central-dev-license'; Version = '' }
-    @{ Id = 'map/ls-central-to-bc'; Version = '' }
+    @{ Id = 'map/ls-central-to-bc'; Version = '!^ 25.1' }
 )
  
 $Packages | Install-UscPackage -InstanceName $InstanceName -Arguments $Arguments -UpdateInstance

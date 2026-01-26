@@ -22,32 +22,26 @@
         With the user domain\user running the Business Central service tier.
 
 #>
-param(
-    $ConnectionString = 'Data Source=${System.SqlServerInstance};Initial Catalog=${Package.InstanceName};Integrated Security=True',
-    $InstanceName = 'Megaflis-ST-v27'
-)
-$ErrorActionPreference = 'stop'
 
+$ErrorActionPreference = 'stop'
+$ExistingInstanceName = 'DG'
+$BcServer = Get-UscInstalledPackage -PackageId 'bc-server' -InstanceName $ExistingInstanceName
 $Arguments = @{
-    'bc-server' = @{
-        ConnectionString = 'Data Source=PTPOPF5VSEB7\AVMSQLSERVER;Initial Catalog=${Package.InstanceName};Integrated Security=True'
-        AllowSessionCallSuspendWhenWriteTransactionStarted = 'true'
+    "bc-server" = @{
+        ConnectionString = $BcServer.Info.ConnectionString
         DeveloperServicesEnabled = 'true'
-        PublicWebBaseUrl = 'http://localhost:8080/${Package.InstanceName}'
+        AllowForceSync = 'true'
+        ClientServicesCredentialType = 'NavUserPassword'
+        AllowSessionCallSuspendWhenWriteTransactionStarted = 'true'
+        NoDatabaseUpgrades = 'true'
+        PortSharing = 'true'
     }
-    'ls-central-demo-database' = @{
-        ConnectionString = 'Data Source=PTPOPF5VSEB7\AVMSQLSERVER;Initial Catalog=${Package.InstanceName};Integrated Security=True'
+    "bc-web-client" = @{
+        ClientServicesCredentialType = 'NavUserPassword'
     }
 }
-
 $Packages = @(
-    @{ Id = 'ls-central-demo-database'; Version = '' }
-    @{ Id = 'bc-server'; Version = '' }
-    @{ Id = 'bc-web-client'; Version = '' }
-    @{ Id = 'ls-central-app-runtime'; Version = '' }
-    @{ Id = 'locale/ls-central-no-runtime'; Version = '' }
-    @{ Id = 'internal/ls-central-dev-license'; Version = '' }
-    @{ Id = 'map/ls-central-to-bc'; Version = '' }
+    @{ Id = 'bc-server'; VersionQuery = $BcServer.Version}
+    @{ Id = 'bc-web-client'; VersionQuery = $BcServer.Version}
 )
- 
-$Packages | Install-UscPackage -InstanceName $InstanceName -Arguments $Arguments -UpdateInstance
+ $Packages | Install-GocPackage -InstanceName 'DG-WS' -UpdateStrategy 'Manual' -Arguments $Arguments -UpdateInstance 
