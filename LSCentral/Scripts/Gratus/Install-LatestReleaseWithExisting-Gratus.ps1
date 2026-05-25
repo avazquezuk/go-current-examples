@@ -16,7 +16,7 @@
     .EXAMPLE
         ```powershell
         Install-LatestRelease.ps1 -ConnectionString 'Data Source=SQLSERVERMACHINE;Initial Catalog=DATABASENAME;Integrated Security=True' -ServiceUser 'domain\user' -ServicePassword (ConvertTo-SecureString -String 'DummyPassword' -AsPlainText -Force)
-        .\Install-LatestReleaseWithExistingDF_21.4-data.ps1 -ConnectionString 'Data Source=PTPOPF5VSEB7\AVMSQLSERVER;Initial Catalog=DF-21_4-data;Integrated Security=True' -ServiceUser 'alejandrova@lsretail.com' -ServicePassword (ConvertTo-SecureString -String 'Password' -AsPlainText -Force)
+        .\Install-LatestReleaseWithExistingVitaCOv23.ps1 -ConnectionString 'Data Source=PTPOPF5VSEB7\AVMSQLSERVER;Initial Catalog=vitaposco_v23;Integrated Security=True' -ServiceUser 'alejandrova@lsretail.com' -ServicePassword (ConvertTo-SecureString -String 'Password' -AsPlainText -Force)
         ```
         This example installs lastest version fo LS Central, connects the database DATABASENAME on the server SQLSERVERMACHINE.
         With the user domain\user running the Business Central service tier.
@@ -24,35 +24,30 @@
 #>
 param(
     $ConnectionString = 'Data Source=${System.SqlServerInstance};Initial Catalog=${Package.InstanceName};Integrated Security=True',
-    [Parameter(Mandatory)]
-    $ServiceUser,
-    [Parameter(Mandatory)]
-    [SecureString] $ServicePassword,
-    $InstanceName = 'DF_21_4_data'
+    $InstanceName = 'Gratus-Migration'
 )
 $ErrorActionPreference = 'stop'
 
 $Arguments = @{
     'bc-server' = @{
-        ConnectionString = $ConnectionString
+        ConnectionString = 'Data Source=PTPOPF5VSEB7\AVMSQLSERVER;Initial Catalog=${Package.InstanceName};Integrated Security=True'
         AllowSessionCallSuspendWhenWriteTransactionStarted = 'true'
-        LicenseUri = 'C:\Development\5337065 (24).bclicense'
         DeveloperServicesEnabled = 'true'
-        PublicWebBaseUrl = 'http://localhost:8080/DF_21_4_data'
-        ServiceUser = $ServiceUser
-        ServicePassword = (ConvertFrom-SecureString $ServicePassword).ToString()
-        NoDatabaseUpgrades = 'False'
+        PublicWebBaseUrl = 'http://localhost:8080/${Package.InstanceName}'
+    }
+    'ls-central-demo-database' = @{
+        ConnectionString = 'Data Source=PTPOPF5VSEB7\AVMSQLSERVER;Initial Catalog=${Package.InstanceName};Integrated Security=True'
     }
 }
 
 $Packages = @(
+    @{ Id = 'ls-central-demo-database'; Version = '' }
     @{ Id = 'bc-server'; Version = '' }
     @{ Id = 'bc-web-client'; Version = '' }
-    @{ Id = 'bc-system-symbols'; Version = '' }
-    @{ Id = 'bc-system-application-runtime'; Version = '' }
-    @{ Id = 'bc-base-application-runtime'; Version = '' }
-    @{ Id = 'ls-central-app-runtime'; Version = '!^ 21.4' }
-    @{ Id = 'map/ls-central-to-bc'; Version = '!^ 21.4' }
+    @{ Id = 'ls-central-app-runtime'; Version = '' }
+    @{ Id = 'locale/ls-central-lt-runtime'; Version = '' }
+    @{ Id = 'internal/ls-central-dev-license'; Version = '' }
+    @{ Id = 'map/ls-central-to-bc'; Version = '' }
 )
  
-$Packages | Install-UscPackage -InstanceName $InstanceName -Arguments $Arguments -UpdateInstance -ErrorAction Continue
+$Packages | Install-UscPackage -InstanceName $InstanceName -Arguments $Arguments -UpdateInstance

@@ -21,8 +21,9 @@ $Arguments = @{
         AllowForceSync = 'true'
         ClientServicesCredentialType = 'NavUserPassword'
         #ServicesCertificateThumbprint = '${my-private-certificate.CertificateThumbprint}'
-        ServicesCertificateThumbprint = '2081d9b4d536ac7ab2df0a3cdb89cf565aeb052a'
+        ServicesCertificateThumbprint = 'e4e910349c5dedf93b257b1b5bfc310b16efad07'
         AllowSessionCallSuspendWhenWriteTransactionStarted = 'true'
+        ConnectionString = 'Data Source=PTPOPF5VSEB7\AVMSQLSERVER;Initial Catalog=LSCentral-Release;Integrated Security=True'
     }
     'bc-web-client' = @{
         #DnsIdentity =  '${my-public-certificate.DnsIdentity}'
@@ -46,4 +47,4 @@ $Packages = @(
     @{ Id = 'map/ls-central-to-bc'; Version = '' }
 )
  
-$Packages | Install-UscPackage -InstanceName 'LSCentral-v27-WS' -UpdateStrategy 'Manual' -Arguments $Arguments
+$Packages | Install-UscPackage -InstanceName 'LSCentral-Release-WS' -UpdateStrategy 'Manual' -Arguments $Arguments

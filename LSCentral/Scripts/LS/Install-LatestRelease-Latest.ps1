@@ -24,9 +24,9 @@ $Packages = @(
     @{ Id = 'bc-web-client'; Version = '' }
     @{ Id = 'bc-system-application-runtime'; Version = '' }
     @{ Id = 'bc-base-application-runtime'; Version = '' }
-    @{ Id = 'ls-central-app-runtime'; Version = '' }
+    @{ Id = 'ls-central-app'; Version = '' }
     @{ Id = 'internal/ls-central-dev-license'; Version = '' }
     @{ Id = 'map/ls-central-to-bc'; Version = '' }
 )
  
-$Packages | Install-UscPackage -InstanceName 'LSC-LoyaltyIntegration' -Arguments $Arguments -UpdateInstance
+$Packages | Install-UscPackage -InstanceName 'LSC-LatestVersion' -Arguments $Arguments -UpdateInstance

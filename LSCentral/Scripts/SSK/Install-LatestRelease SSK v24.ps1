@@ -26,7 +26,9 @@ $Packages = @(
     @{ Id = 'bc-base-application-runtime'; Version = '!^ 24.0' }
     @{ Id = 'ls-central-app'; Version = '!^ 24.0' }
     @{ Id = 'internal/ls-central-dev-license'; Version = '' }
+    @{ Id = 'ls-kds-service'; Version = '!^ 24.0' }
+    @{ Id = 'ls-kds-display-station-windows'; Version = '!^ 24.0' }
     @{ Id = 'map/ls-central-to-bc'; Version = '!^ 24.0' }
 )
 
-$Packages | Install-UscPackage -InstanceName 'LSC-SSK-v24' -Arguments $Arguments -UpdateInstance
+$Packages | Install-UscPackage -InstanceName 'Scandlines-SSK-v24' -Arguments $Arguments -UpdateInstance

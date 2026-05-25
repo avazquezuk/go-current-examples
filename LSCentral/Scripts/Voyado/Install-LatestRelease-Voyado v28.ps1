@@ -1,4 +1,4 @@
-﻿#requires -RunAsAdministrator
+#requires -RunAsAdministrator
 <#
     .SYNOPSIS
         Install the latest LS Central version.
@@ -18,16 +18,13 @@ $Arguments = @{
 }
 
 $Packages = @(
-    # Optional, uncomment to include:
-    #@{ Id = 'sql-server-express'; VersionQuery = ''}
-    @{ Id = 'ls-central-demo-database'; Version = '' }
+    @{ Id = 'ls-central-demo-database'; Version = '!^ 28.0' }
     @{ Id = 'bc-web-client'; Version = '' }
     @{ Id = 'bc-system-application-runtime'; Version = '' }
     @{ Id = 'bc-base-application-runtime'; Version = '' }
-    @{ Id = 'ls-central-app'; Version = '' }
-    @{ Id = 'bc-contoso-coffee-demo-dataset-app'; Version = '' }
+    @{ Id = 'ls-central-app'; Version = '!^ 28.0' }
     @{ Id = 'internal/ls-central-dev-license'; Version = '' }
-    @{ Id = 'map/ls-central-to-bc'; Version = '' }
+    @{ Id = 'map/ls-central-to-bc'; Version = '!^ 28.0' }
 )
- 
-$Packages | Install-UscPackage -InstanceName 'LSCentral-Release' -Arguments $Arguments
+
+$Packages | Install-UscPackage -InstanceName 'OnPrem-Voyado-v28' -Arguments $Arguments -UpdateInstance

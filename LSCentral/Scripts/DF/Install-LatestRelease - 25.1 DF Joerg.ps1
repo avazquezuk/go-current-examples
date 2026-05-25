@@ -14,7 +14,7 @@ $Arguments = @{
         ConnectionString = 'Data Source=PTPOPF5VSEB7\AVMSQLSERVER;Initial Catalog=${Package.InstanceName};Integrated Security=True'
         NoDatabaseUpgrades = 'False'
         ServiceUser = 'LSRETAIL\ALEJANDROVA'
-        ServicePassword = 'Zpyv5xhvb1210.'
+        ServicePassword = 'Password'
     }
 }
 
